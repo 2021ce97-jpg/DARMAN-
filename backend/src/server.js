@@ -18,6 +18,7 @@ import aiRoutes from './routes/ai.routes.js';
 import notificationRoutes from './routes/notification.routes.js';
 import prescriptionRoutes from './routes/prescription.routes.js';
 import uploadRoutes from './routes/upload.routes.js';
+import adminRoutes from './routes/admin.routes.js';
 
 dotenv.config();
 
@@ -100,6 +101,7 @@ fastify.register(aiRoutes, { prefix: '/api/v1/ai' });
 fastify.register(notificationRoutes, { prefix: '/api/v1/notifications' });
 fastify.register(prescriptionRoutes, { prefix: '/api/v1/prescriptions' });
 fastify.register(uploadRoutes, { prefix: '/api/v1/upload' });
+fastify.register(adminRoutes, { prefix: '/api/v1/admin' });
 
 // Error handler
 fastify.setErrorHandler((error, request, reply) => {
@@ -133,3 +135,4 @@ const start = async () => {
 };
 
 start();
+

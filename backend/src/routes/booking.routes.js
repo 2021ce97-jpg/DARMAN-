@@ -316,4 +316,18 @@ export default async function bookingRoutes(fastify, options) {
       return reply.status(500).send({ error: { message: error.message, statusCode: 500 } });
     }
   });
+
+  // Admin: Get all bookings
+  fastify.get('/all', async (request, reply) => {
+    try {
+      const snapshot = await db.collection('appointments').orderBy('createdAt', 'desc').limit(100).get();
+      const bookings = [];
+      snapshot.forEach(doc => bookings.push({ id: doc.id, ...doc.data() }));
+      return reply.send({ success: true, data: bookings });
+    } catch (error) {
+      fastify.log.error(error);
+      return reply.status(500).send({ error: { message: error.message, statusCode: 500 } });
+    }
+  });
 }
+

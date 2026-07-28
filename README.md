@@ -1,472 +1,111 @@
-# 🏥 DARMAN MediConnect - Healthcare Platform for Afghanistan
+# DARMAN MediConnect - Healthcare Platform for Afghanistan
 
-> **Revolutionary healthcare platform connecting patients, doctors, hospitals, labs, and pharmacies across Afghanistan**
-
-![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
-![Version](https://img.shields.io/badge/Version-1.0.0-blue)
-![License](https://img.shields.io/badge/License-Proprietary-red)
-![Platform](https://img.shields.io/badge/Platform-Web%20%7C%20Mobile-orange)
+Connecting patients, doctors, hospitals, labs, and pharmacies across Afghanistan.
 
 ---
 
-## 🎉 **PROJECT STATUS: 🟢 PRODUCTION READY (v1.0.0)**
+## Live Service Links
 
-✅ **Web App**: https://mediconnect-4b155.web.app (LIVE)  
-✅ **Backend API**: https://darman-api.onrender.com (DEPLOYED)  
-✅ **Mobile App**: APK Built & Installed on Devices (TESTED)  
-✅ **Database**: Firebase Firestore (ACTIVE)  
-✅ **Authentication**: Firebase + JWT (WORKING)  
-✅ **All Features**: 100% Tested & Working  
-✅ **API Endpoints**: 40+ endpoints (VERIFIED)  
-✅ **Security**: Hardened & Compliant (AUDITED)  
-
----
-
-## 📋 Table of Contents
-
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Quick Start](#quick-start)
-- [Project Structure](#project-structure)
-- [API Documentation](#api-documentation)
-- [Testing](#testing)
-- [Development](#development)
-- [Deployment](#deployment)
-- [Contributing](#contributing)
+| Service | URL | Status |
+|---------|-----|--------|
+| Patient Web App (Flutter) | https://mediconnect-4b155.web.app | Live |
+| Backend API | https://darman.onrender.com | Live |
+| API Health Check | https://darman.onrender.com/health | Live |
+| Admin Dashboard (Next.js) | Not yet deployed to Vercel | Pending |
+| Firebase Console | https://console.firebase.google.com/project/mediconnect-4b155 | Active |
+| Firestore Database | https://console.firebase.google.com/project/mediconnect-4b155/firestore | Active |
+| Firebase Auth | https://console.firebase.google.com/project/mediconnect-4b155/authentication | Active |
+| Firebase Storage | https://console.firebase.google.com/project/mediconnect-4b155/storage | Active |
 
 ---
 
-## ✨ Features
+## Test Accounts
 
-### For Patients
-- 🔍 **Search & Discovery**: Find doctors, hospitals, labs, and pharmacies
-- 📅 **Appointment Booking**: Book in-person or online consultations
-- 💬 **AI Chatbot**: Get health advice and symptom checking
-- 📱 **Telemedicine**: Video consultations with doctors
-- 📋 **Health Records**: Manage your medical history digitally
-- 💊 **Prescriptions**: Digital prescription management
-- ⭐ **Reviews & Ratings**: Read and write provider reviews
-- 🔔 **Notifications**: Get reminders for appointments
-
-### For Doctors
-- 📊 **Dashboard**: Manage appointments and patients
-- 🗓️ **Schedule Management**: Set availability and working hours
-- 💰 **Earnings Tracking**: Monitor consultation fees
-- 📝 **Digital Prescriptions**: Create and manage prescriptions
-- 👥 **Patient Records**: Access patient medical history (with consent)
-- 📹 **Video Consultations**: Conduct online appointments
-
-### For Hospitals/Labs/Pharmacies
-- 🏥 **Profile Management**: Showcase services and facilities
-- 📍 **Location Services**: Help patients find you
-- 📊 **Analytics**: Track bookings and reviews
-- 💳 **Payment Integration**: Accept digital payments
+| Email | Password | Role |
+|-------|----------|------|
+| patient@darman.af | Darman2026! | Patient |
+| admin@darman.af | Darman2026! | Admin |
+| dr.karimi@darman.af | Darman2026! | Doctor |
+| dr.noori@darman.af | Darman2026! | Doctor |
+| dr.ahmadzai@darman.af | Darman2026! | Doctor |
+| dr.sultani@darman.af | Darman2026! | Doctor |
 
 ---
 
-## 🛠️ Tech Stack
+## Project Progress
 
-### Frontend (Mobile App)
-- **Framework**: Flutter 3.41.9
-- **State Management**: Riverpod 3.3.1
-- **Navigation**: GoRouter 17.2.2
-- **UI**: Material Design 3
-- **HTTP Client**: http 1.2.2
-- **Local Storage**: SharedPreferences 2.3.4
+### Phase 1 - Core MVP [100% COMPLETE]
+- Firebase Auth with role-based routing (patient / doctor / admin)
+- Patient Flutter app - 25+ screens
+- Doctor Flutter app - dedicated dashboard with appointments, patients, prescriptions
+- Admin Flutter screen
+- Backend API (Node.js + Fastify) - 14 route modules, 40+ endpoints
+- Firestore with seeded doctor, hospital, lab, pharmacy data
+- Android APK built and tested
 
-### Backend (API Server)
-- **Runtime**: Node.js 24.14.1
-- **Framework**: Fastify 5.2.0
-- **Database**: Firebase Firestore
-- **Authentication**: Firebase Auth
-- **Storage**: Firebase Storage
-- **Cache**: Redis (optional)
-- **Analytics**: PostgreSQL (optional)
+### Phase 2 - Enhanced Features [90% COMPLETE]
+- AI Chatbot (Gemini API - configured in backend + mobile)
+- Symptom checker screen
+- Video consultation screen (Agora service built, needs credentials)
+- Prescription management (create, list, detail screens)
+- Payment screen + backend service (needs HesabPay credentials)
+- Health dashboard + vitals tracking
+- Lab tests and pharmacy screens
+- Push notifications (FCM integrated)
+- PENDING: Set AGORA_APP_ID + AGORA_APP_CERTIFICATE in Render env vars
+- PENDING: Set HESABPAY_API_KEY in Render env vars
 
-### External Services
-- **Firebase**: Auth, Firestore, Storage, Cloud Messaging
-- **Google Gemini**: AI chatbot
-- **Agora**: Video consultations
-- **HesabPay**: Payment processing (Afghanistan)
-- **OpenStreetMap**: Maps and location services
+### Phase 3 - Admin Web Dashboard [70% COMPLETE]
+- Next.js 14 admin dashboard built locally
+- 5 panels: Overview, Doctors, Patients, Bookings, Analytics
+- Login page with credentials guard
+- NOT DEPLOYED - run: cd admin-dashboard && npx vercel deploy --prod
+- Panels currently use mock data - needs live Firestore connection
 
----
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Node.js 18+ installed
-- Flutter 3.0+ installed
-- Git installed
-
-### 1. Clone the Repository
-```bash
-git clone <repository-url>
-cd mediconnect
-```
-
-### 2. Start Backend Server
-```bash
-cd backend
-npm install
-node src/server.js
-```
-✅ Server running on: http://localhost:3000
-
-### 3. Start Flutter App
-```bash
-cd medi_connect
-flutter pub get
-flutter run -d chrome --web-port=8080
-```
-✅ App running on: http://localhost:8080
-
-### 4. Test the Integration
-Open http://localhost:8080 in Chrome and:
-1. Register a new account
-2. Browse doctors
-3. Create a booking
-4. View your appointments
-
-See [TESTING_GUIDE.md](TESTING_GUIDE.md) for detailed testing instructions.
+### Phase 4 - Localization and Production Polish [0% NOT STARTED]
+- Dari and Pashto language support
+- RTL layout support
+- Google Play Store submission
+- Admin dashboard connected to real Firebase data
 
 ---
 
-## 📁 Project Structure
+## Tech Stack
 
-```
-mediconnect/
-├── backend/                    # Node.js/Fastify backend
-│   ├── src/
-│   │   ├── config/            # Configuration files
-│   │   │   └── firebase.js    # Firebase Admin SDK setup
-│   │   ├── middleware/        # Custom middleware
-│   │   │   └── auth.middleware.js
-│   │   ├── routes/            # API routes (12 modules)
-│   │   │   ├── auth.routes.js
-│   │   │   ├── doctor.routes.js
-│   │   │   ├── booking.routes.js
-│   │   │   ├── consultation.routes.js
-│   │   │   ├── hospital.routes.js
-│   │   │   ├── lab.routes.js
-│   │   │   ├── pharmacy.routes.js
-│   │   │   ├── emr.routes.js
-│   │   │   ├── payment.routes.js
-│   │   │   ├── search.routes.js
-│   │   │   ├── ai.routes.js
-│   │   │   └── notification.routes.js
-│   │   └── server.js          # Main server file
-│   ├── .env                   # Environment variables
-│   ├── .env.example           # Example environment variables
-│   ├── package.json           # Dependencies
-│   └── README.md              # Backend documentation
-│
-├── medi_connect/              # Flutter mobile app
-│   ├── lib/
-│   │   ├── config/           # Configuration
-│   │   │   └── api_config.dart
-│   │   ├── models/           # Data models (6 models)
-│   │   │   ├── doctor_model.dart
-│   │   │   ├── user_model.dart
-│   │   │   ├── appointment_model.dart
-│   │   │   ├── prescription_model.dart
-│   │   │   ├── review_model.dart
-│   │   │   └── notification_model.dart
-│   │   ├── screens/          # UI screens (14+ screens)
-│   │   │   ├── home_screen.dart
-│   │   │   ├── home_screen_api.dart
-│   │   │   ├── search_screen.dart
-│   │   │   ├── doctor_listing_screen.dart
-│   │   │   ├── doctor_profile_screen.dart
-│   │   │   ├── booking_summary_screen.dart
-│   │   │   ├── appointments_screen.dart
-│   │   │   ├── profile_screen.dart
-│   │   │   ├── health_records_screen.dart
-│   │   │   ├── medical_history_screen.dart
-│   │   │   ├── symptom_checker_screen.dart
-│   │   │   ├── help_screen.dart
-│   │   │   ├── login_screen.dart
-│   │   │   ├── register_screen.dart
-│   │   │   ├── register_screen_api.dart
-│   │   │   └── main_scaffold.dart
-│   │   ├── services/         # Service layers (8 services)
-│   │   │   ├── api_client.dart
-│   │   │   ├── auth_service.dart
-│   │   │   ├── doctor_service.dart
-│   │   │   ├── booking_service.dart
-│   │   │   ├── booking_service_api.dart
-│   │   │   ├── notification_service.dart
-│   │   │   ├── prescription_service.dart
-│   │   │   ├── review_service.dart
-│   │   │   └── user_service.dart
-│   │   ├── theme/            # App theme
-│   │   │   ├── app_colors.dart
-│   │   │   └── app_theme.dart
-│   │   ├── widgets/          # Reusable widgets
-│   │   │   ├── doctor_card.dart
-│   │   │   ├── custom_button.dart
-│   │   │   ├── section_header.dart
-│   │   │   └── ...
-│   │   ├── firebase_options.dart
-│   │   └── main.dart         # App entry point
-│   ├── pubspec.yaml          # Flutter dependencies
-│   └── README.md             # Flutter app documentation
-│
-├── .kiro/specs/              # Specification documents
-│   └── afghanistan-healthcare-platform/
-│       ├── requirements.md   # Requirements document
-│       └── design.md         # Design document
-│
-├── PROJECT_STATUS.md         # Detailed project status
-├── QUICK_START.md           # Quick start guide
-├── PHASE1_PROGRESS.md       # Phase 1 progress report
-├── TESTING_GUIDE.md         # Testing guide
-└── README.md                # This file
-```
+| Layer | Technology |
+|-------|-----------|
+| Mobile/Web App | Flutter 3.41 + Riverpod + GoRouter |
+| Backend API | Node.js 24 + Fastify 5 |
+| Database | Firebase Firestore |
+| Auth | Firebase Authentication |
+| Hosting | Firebase Hosting (Flutter web) |
+| Backend Host | Render.com |
+| Admin Dashboard | Next.js 14 + Tailwind CSS |
+| AI | Google Gemini API |
+| Video Calls | Agora SDK |
+| Payments | HesabPay (Afghanistan) |
+| Notifications | Firebase Cloud Messaging |
 
 ---
 
-## 📡 API Documentation
+## Quick Start
 
-### Base URL
-```
-http://localhost:3000/api/v1
-```
-
-### Authentication
-Most endpoints require authentication. Include Firebase ID token in header:
-```
-Authorization: Bearer <firebase-id-token>
-```
-
-For mock mode testing, use:
-```
-Authorization: Bearer mock_user123
-```
-
-### Endpoints
-
-#### Authentication
-- `POST /auth/register` - Register new user
-- `GET /auth/profile` - Get user profile
-- `PUT /auth/profile` - Update user profile
-- `POST /auth/verify-token` - Verify Firebase token
-
-#### Doctors
-- `GET /doctors` - List doctors (filters: specialty, province, city)
-- `GET /doctors/:id` - Get doctor details
-- `GET /doctors/:id/availability?date=YYYY-MM-DD` - Get availability
-- `POST /doctors/profile` - Create doctor profile
-- `PUT /doctors/:id/availability` - Update availability
-- `GET /doctors/meta/specialties` - Get specialties list
-
-#### Bookings
-- `POST /bookings` - Create booking
-- `GET /bookings/my-bookings` - Get user bookings
-- `GET /bookings/:id` - Get booking details
-- `PUT /bookings/:id/cancel` - Cancel booking
-
-#### Hospitals, Labs, Pharmacies
-- `GET /hospitals` - List hospitals
-- `GET /hospitals/:id` - Get hospital details
-- `GET /labs` - List diagnostic labs
-- `GET /pharmacies` - List pharmacies
-
-#### Search
-- `GET /search?q=<query>` - Global search
-
-#### Medical Records
-- `GET /emr/records` - Get patient records
-- `POST /emr/records` - Add medical record
-
-#### Payments
-- `POST /payments/create-intent` - Create payment
-- `POST /payments/:id/confirm` - Confirm payment
-
-#### AI & Notifications
-- `POST /ai/chat` - AI chatbot
-- `POST /ai/symptom-checker` - Symptom checker
-- `GET /notifications` - Get notifications
-- `PUT /notifications/:id/read` - Mark as read
-- `POST /notifications/register-token` - Register FCM token
-
-See [backend/README.md](backend/README.md) for detailed API documentation.
+Run Backend: cd backend && npm install && node src/server.js -> http://localhost:3000
+Run Flutter:  cd medi_connect && flutter pub get && flutter run -d chrome -> http://localhost:8080
+Run Admin:    cd admin-dashboard && npm install && npm run dev -> http://localhost:3001
+Build APK:    cd medi_connect && flutter build apk --release
 
 ---
 
-## 🧪 Testing
+## Next Actions (Priority Order)
 
-### Run Backend Tests
-```bash
-cd backend
-npm test
-```
-
-### Run Flutter Tests
-```bash
-cd medi_connect
-flutter test
-```
-
-### Manual Testing
-See [TESTING_GUIDE.md](TESTING_GUIDE.md) for comprehensive testing scenarios.
-
-### Test with Mock Data
-The backend runs in mock mode by default with seeded data:
-- 5 doctors across different specialties
-- 3 hospitals
-- 2 diagnostic labs
-- 2 pharmacies
+1. Deploy admin dashboard: cd admin-dashboard && npx vercel deploy --prod
+2. Add Agora credentials in Render dashboard (AGORA_APP_ID, AGORA_APP_CERTIFICATE)
+3. Add HesabPay credentials in Render dashboard (HESABPAY_API_KEY)
+4. Connect admin dashboard panels to live Firestore
+5. Add Dari/Pashto localization to Flutter app
+6. Submit APK to Google Play Store
 
 ---
 
-## 💻 Development
-
-### Backend Development
-```bash
-cd backend
-npm run dev  # Start with nodemon (auto-reload)
-```
-
-### Flutter Development
-```bash
-cd medi_connect
-flutter run -d chrome  # Run on Chrome
-flutter run -d windows  # Run on Windows
-flutter run  # Run on connected device
-```
-
-### Hot Reload
-While Flutter app is running:
-- Press `r` for hot reload
-- Press `R` for hot restart
-- Press `q` to quit
-
-### Code Style
-- Backend: ESLint + Prettier
-- Flutter: Dart analyzer + flutter_lints
-
----
-
-## 🚀 Deployment
-
-### Backend Deployment
-1. Set up Firebase project
-2. Add production credentials to `.env`
-3. Deploy to Cloud Run, AWS, or Heroku
-4. Configure environment variables
-5. Set up Redis and PostgreSQL (optional)
-
-### Flutter Web Deployment
-```bash
-cd medi_connect
-flutter build web
-# Deploy to Firebase Hosting, Netlify, or Vercel
-```
-
-### Mobile App Deployment
-```bash
-# Android
-flutter build apk --release
-flutter build appbundle --release
-
-# iOS (requires Mac)
-flutter build ios --release
-```
-
----
-
-## 📊 Project Progress
-
-### Phase 1: Integration ✅ **COMPLETE (100%)**
-- ✅ Connect Flutter to Backend API
-- ✅ Real Firebase Setup (optional for now)
-- ✅ Complete Booking Flow
-- ✅ Test End-to-End
-
-### Phase 2: Enhanced Features ⏳ **PENDING**
-- ⏳ Video consultation (Agora SDK)
-- ⏳ AI chatbot (Google Gemini API)
-- ⏳ Prescription management
-- ⏳ Medical records with file uploads
-
-### Phase 3: Additional Apps ⏳ **PENDING**
-- ⏳ Doctor mobile app
-- ⏳ Admin web dashboard
-- ⏳ Hospital/Lab/Pharmacy portals
-
-### Phase 4: Production Ready ⏳ **PENDING**
-- ⏳ Dari/Pashto localization
-- ⏳ RTL text direction
-- ⏳ Production deployment
-- ⏳ App store release
-- ⏳ Testing & QA
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
----
-
-## 👥 Team
-
-- **Project Lead**: [Fazlullah Sardarkhil]
-- **Backend Developer**: [Fazlullah Sardarkhil]
-- **Frontend Developer**: [Fazlullah Sardarkhil]
-- **UI/UX Designer**: [Fazlullah Sardarkhil]
-
----
-
-## 📞 Support
-
-For issues or questions:
-- 📧 Email: support@mediconnect.af
-- 🐛 Issues: [GitHub Issues](https://github.com/your-repo/issues)
-- 📖 Documentation: See docs/ folder
-
----
-
-## 🙏 Acknowledgments
-
-- Flutter team for the amazing framework
-- Firebase for backend services
-- Afghan healthcare workers for their dedication
-- Open source community
-
----
-
-## 📈 Statistics
-
-- **Backend Routes**: 12 modules, 40+ endpoints
-- **Flutter Screens**: 14+ screens
-- **Data Models**: 6 models
-- **Service Layers**: 8 services
-- **Mock Entities**: 12 entities
-- **Lines of Code**: ~6,000+
-- **Development Time**: Phase 1 complete
-
----
-
-## 🎯 Vision
-
-To make quality healthcare accessible to every Afghan citizen, regardless of location, through technology and innovation.
-
----
-
-*Last Updated: May 3, 2026*  
-*Version: 1.0.0*  
-*Status: Phase 1 Complete ✅*
+Last updated: July 28, 2026 - v1.2.0

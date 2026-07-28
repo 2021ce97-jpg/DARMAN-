@@ -51,34 +51,38 @@ class DoctorModel {
     this.createdAt,
   });
 
-  factory DoctorModel.fromFirestore(DocumentSnapshot doc) {
-    final data = doc.data() as Map<String, dynamic>;
-    return DoctorModel(
-      id: doc.id,
-      name: data['name'] ?? 'Unknown Doctor',
-      specialty: data['specialty'] ?? 'General Physician',
-      city: data['city'] ?? 'Kabul',
-      province: data['province'] ?? 'Kabul',
-      status: data['status'] ?? 'Pending',
-      regNo: data['regNo'] ?? 'N/A',
-      fee: (data['fee'] as num?)?.toDouble() ?? 500,
-      bio: data['bio'],
-      photoUrl: data['photoUrl'],
-      hospital: data['hospital'],
-      phone: data['phone'],
-      email: data['email'],
-      rating: (data['rating'] as num?)?.toDouble() ?? 0.0,
-      reviewCount: (data['reviewCount'] as num?)?.toInt() ?? 0,
-      experienceYears: (data['experienceYears'] as num?)?.toInt() ?? 0,
-      availableDays: List<String>.from(data['availableDays'] ?? ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']),
-      workingHoursStart: data['workingHoursStart'] ?? '09:00',
-      workingHoursEnd: data['workingHoursEnd'] ?? '17:00',
-      languages: List<String>.from(data['languages'] ?? ['English']),
-      qualifications: List<String>.from(data['qualifications'] ?? []),
-      isAvailableOnline: data['isAvailableOnline'] ?? false,
-      createdAt: (data['createdAt'] as Timestamp?)?.toDate(),
-    );
-  }
+factory DoctorModel.fromFirestore(DocumentSnapshot doc) {
+  final data = doc.data() as Map<String, dynamic>;
+  
+  // Debug print to see actual Firebase data structure
+  print('Firebase Doctor Data: $data');
+  
+  return DoctorModel(
+    id: doc.id,
+    name: data['fullName'] ?? data['name'] ?? 'Unknown Doctor', // KEY FIX: Use fullName
+    specialty: data['specialty'] ?? 'General Physician',
+    city: data['city'] ?? 'Kabul City',
+    province: data['province'] ?? 'Kabul',
+    status: data['status'] ?? 'Pending',
+    regNo: data['regNo'] ?? data['id'] ?? 'N/A',
+    fee: (data['fee'] as num?)?.toDouble() ?? 500,
+    bio: data['about'] ?? data['bio'] ?? '', // KEY FIX: Use about
+    photoUrl: data['photoUrl'],
+    hospital: data['hospital'] ?? 'General Hospital',
+    phone: data['phone'],
+    email: data['email'],
+    rating: (data['rating'] as num?)?.toDouble() ?? 0.0,
+    reviewCount: (data['reviewCount'] as num?)?.toInt() ?? 0,
+    experienceYears: (data['experience'] ?? data['experienceYears'] as num?)?.toInt() ?? 0, // KEY FIX: Use experience
+    availableDays: List<String>.from(data['availableDays'] ?? ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']),
+    workingHoursStart: data['workingHoursStart'] ?? '09:00',
+    workingHoursEnd: data['workingHoursEnd'] ?? '17:00',
+    languages: List<String>.from(data['languages'] ?? ['English']),
+    qualifications: List<String>.from(data['qualifications'] ?? []),
+    isAvailableOnline: data['isAvailableOnline'] ?? false,
+    createdAt: (data['createdAt'] as Timestamp?)?.toDate(),
+  );
+}
 
   /// Factory constructor from JSON (for API responses)
   factory DoctorModel.fromJson(Map<String, dynamic> json) {

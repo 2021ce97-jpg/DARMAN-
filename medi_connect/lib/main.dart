@@ -19,7 +19,6 @@ import 'screens/booking_summary_screen.dart';
 import 'screens/health_records_screen.dart';
 import 'screens/help_screen.dart';
 import 'screens/login_screen.dart';
-import 'screens/register_screen.dart';
 import 'screens/unified_register_screen.dart';
 import 'screens/symptom_checker_screen.dart';
 import 'screens/ai_chatbot_screen.dart';

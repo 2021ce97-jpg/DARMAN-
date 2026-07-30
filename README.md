@@ -1,111 +1,76 @@
-# DARMAN MediConnect - Healthcare Platform for Afghanistan
+# DARMAN
 
-Connecting patients, doctors, hospitals, labs, and pharmacies across Afghanistan.
+DARMAN is a healthcare discovery and telemedicine platform for Afghanistan.
 
----
+This repo now focuses on the core demo flow:
 
-## Live Service Links
+- Patient login
+- Doctor login
+- Patient doctor browsing from Firestore
+- Admin dashboard counts from Firestore
+- A clean project layout that is easier to share and understand
 
-| Service | URL | Status |
-|---------|-----|--------|
-| Patient Web App (Flutter) | https://mediconnect-4b155.web.app | Live |
-| Backend API | https://darman.onrender.com | Live |
-| API Health Check | https://darman.onrender.com/health | Live |
-| Admin Dashboard (Next.js) | Not yet deployed to Vercel | Pending |
-| Firebase Console | https://console.firebase.google.com/project/mediconnect-4b155 | Active |
-| Firestore Database | https://console.firebase.google.com/project/mediconnect-4b155/firestore | Active |
-| Firebase Auth | https://console.firebase.google.com/project/mediconnect-4b155/authentication | Active |
-| Firebase Storage | https://console.firebase.google.com/project/mediconnect-4b155/storage | Active |
+## What Works Now
 
----
+- Patients can sign in and browse verified doctors from the `doctors` collection in Firebase Firestore.
+- Doctors can sign in and open the doctor area.
+- Admins can sign in and see platform totals such as registered patients, doctors, pending doctors, and appointments.
+- Role routing is handled from the Flutter app in `medi_connect`.
 
-## Test Accounts
+## Demo Access
 
-| Email | Password | Role |
-|-------|----------|------|
-| patient@darman.af | Darman2026! | Patient |
-| admin@darman.af | Darman2026! | Admin |
-| dr.karimi@darman.af | Darman2026! | Doctor |
-| dr.noori@darman.af | Darman2026! | Doctor |
-| dr.ahmadzai@darman.af | Darman2026! | Doctor |
-| dr.sultani@darman.af | Darman2026! | Doctor |
+Use these demo accounts to test the current flow:
 
----
+| Role | Email | Password |
+| --- | --- | --- |
+| Patient | `patient@darman.af` | `Darman2026!` |
+| Doctor | `doctor@darman.af` | `Darman2026!` |
+| Admin | `admin@darman.af` | `Darman2026!` |
 
-## Project Progress
+Login screen:
 
-### Phase 1 - Core MVP [100% COMPLETE]
-- Firebase Auth with role-based routing (patient / doctor / admin)
-- Patient Flutter app - 25+ screens
-- Doctor Flutter app - dedicated dashboard with appointments, patients, prescriptions
-- Admin Flutter screen
-- Backend API (Node.js + Fastify) - 14 route modules, 40+ endpoints
-- Firestore with seeded doctor, hospital, lab, pharmacy data
-- Android APK built and tested
+- `https://mediconnect-4b155.web.app/login`
 
-### Phase 2 - Enhanced Features [90% COMPLETE]
-- AI Chatbot (Gemini API - configured in backend + mobile)
-- Symptom checker screen
-- Video consultation screen (Agora service built, needs credentials)
-- Prescription management (create, list, detail screens)
-- Payment screen + backend service (needs HesabPay credentials)
-- Health dashboard + vitals tracking
-- Lab tests and pharmacy screens
-- Push notifications (FCM integrated)
-- PENDING: Set AGORA_APP_ID + AGORA_APP_CERTIFICATE in Render env vars
-- PENDING: Set HESABPAY_API_KEY in Render env vars
+Direct routes after login:
 
-### Phase 3 - Admin Web Dashboard [70% COMPLETE]
-- Next.js 14 admin dashboard built locally
-- 5 panels: Overview, Doctors, Patients, Bookings, Analytics
-- Login page with credentials guard
-- NOT DEPLOYED - run: cd admin-dashboard && npx vercel deploy --prod
-- Panels currently use mock data - needs live Firestore connection
+- Patient: `/`
+- Doctor: `/doctor`
+- Admin: `/admin`
 
-### Phase 4 - Localization and Production Polish [0% NOT STARTED]
-- Dari and Pashto language support
-- RTL layout support
-- Google Play Store submission
-- Admin dashboard connected to real Firebase data
+## Data Model Used For This Demo
 
----
+- `users` collection stores the user role and profile basics.
+- `doctors` collection stores doctor profiles shown to patients.
+- `appointments` collection is used for admin totals and booking history.
 
-## Tech Stack
+## Active App
 
-| Layer | Technology |
-|-------|-----------|
-| Mobile/Web App | Flutter 3.41 + Riverpod + GoRouter |
-| Backend API | Node.js 24 + Fastify 5 |
-| Database | Firebase Firestore |
-| Auth | Firebase Authentication |
-| Hosting | Firebase Hosting (Flutter web) |
-| Backend Host | Render.com |
-| Admin Dashboard | Next.js 14 + Tailwind CSS |
-| AI | Google Gemini API |
-| Video Calls | Agora SDK |
-| Payments | HesabPay (Afghanistan) |
-| Notifications | Firebase Cloud Messaging |
+The active app is the Flutter project in `medi_connect/`.
 
----
+```bash
+cd medi_connect
+flutter pub get
+flutter run -d chrome
+```
 
-## Quick Start
+## Current Status
 
-Run Backend: cd backend && npm install && node src/server.js -> http://localhost:3000
-Run Flutter:  cd medi_connect && flutter pub get && flutter run -d chrome -> http://localhost:8080
-Run Admin:    cd admin-dashboard && npm install && npm run dev -> http://localhost:3001
-Build APK:    cd medi_connect && flutter build apk --release
+- Patient login: working
+- Doctor login: working
+- Doctor listing from Firestore: working
+- Admin counts: implemented in the Flutter admin screen
+- Legacy backend, admin dashboard, functions, scripts, and docs: archived
+- Documentation cleanup: complete for the demo slice
 
----
+## Next Important Steps
 
-## Next Actions (Priority Order)
+1. Confirm the live Firebase data has the correct `users`, `doctors`, and `appointments` documents.
+2. Add or refresh verified doctor records so patients see useful listings.
+3. Confirm the admin account can read Firestore counts in your live Firebase project.
+4. Restore archived folders only if you want to continue the broader platform roadmap.
+5. Continue the unfinished features only after the core login and Firestore flows are stable.
 
-1. Deploy admin dashboard: cd admin-dashboard && npx vercel deploy --prod
-2. Add Agora credentials in Render dashboard (AGORA_APP_ID, AGORA_APP_CERTIFICATE)
-3. Add HesabPay credentials in Render dashboard (HESABPAY_API_KEY)
-4. Connect admin dashboard panels to live Firestore
-5. Add Dari/Pashto localization to Flutter app
-6. Submit APK to Google Play Store
+## Notes
 
----
-
-Last updated: July 28, 2026 - v1.2.0
+- The repo now keeps older material under `archive/` so the shareable version is simpler.
+- If you want me to verify live Firebase counts or fix any missing role data, I can do that with the Firebase service-account JSON you attached.

@@ -259,10 +259,8 @@ class BookingNotifier extends Notifier<BookingState> {
         return;
     }
 
-    if (previousStep != null) {
-      state = state.copyWith(currentStep: previousStep, error: null);
+    state = state.copyWith(currentStep: previousStep, error: null);
     }
-  }
 
   /// Cancel booking and reset state
   void cancelBooking() {

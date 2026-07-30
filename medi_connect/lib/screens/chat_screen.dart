@@ -428,7 +428,7 @@ class _TypingDotState extends State<_TypingDot>
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _animation,
-      builder: (_, __) => Container(
+      builder: (_, _) => Container(
         width: 6,
         height: 6,
         decoration: BoxDecoration(

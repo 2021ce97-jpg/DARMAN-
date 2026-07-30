@@ -60,13 +60,13 @@ class ChatFirestoreService {
             final deliveredRaw = data['deliveredAt'];
             final readRaw = data['readAt'];
             // Top-level values
-            if (deliveredRaw is Timestamp)
+            if (deliveredRaw is Timestamp) {
               delivered = deliveredRaw.toDate();
-            else if (deliveredRaw is String)
+            } else if (deliveredRaw is String)
               delivered = DateTime.tryParse(deliveredRaw);
-            if (readRaw is Timestamp)
+            if (readRaw is Timestamp) {
               read = readRaw.toDate();
-            else if (readRaw is String)
+            } else if (readRaw is String)
               read = DateTime.tryParse(readRaw);
 
             // Prefer per-recipient delivered timestamp when present
@@ -76,9 +76,9 @@ class ChatFirestoreService {
                 final deliveredMap = meta['deliveredTo'];
                 if (deliveredMap is Map) {
                   final myDeliveredRaw = deliveredMap[_auth.currentUser!.uid];
-                  if (myDeliveredRaw is Timestamp)
+                  if (myDeliveredRaw is Timestamp) {
                     delivered = myDeliveredRaw.toDate();
-                  else if (myDeliveredRaw is String)
+                  } else if (myDeliveredRaw is String)
                     delivered = DateTime.tryParse(myDeliveredRaw) ?? delivered;
                 }
               }
